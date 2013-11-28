@@ -19,14 +19,14 @@ public class Test {
 	public static void main(String[] args) throws IOException, TesseractException {
 //		Tesseract instance = Tesseract.getInstance();  // JNA Interface Mapping
         Tesseract1 instance = new Tesseract1(); // JNA Direct Mapping
-		File imageFile = new File("imgs/ao.png");
+		File imageFile = new File("imgs/eurotext.png");
         BufferedImage bufferedImage = ImageIO.read(imageFile);
         bufferedImage = ImageHelper.convertImageToGrayscale(bufferedImage);
         bufferedImage = ImageHelper.convertImageToBinary(bufferedImage);
         
         File output = new File("imgs/out.png");
         ImageIO.write(bufferedImage, "png", output);
-        String result = instance.doOCR(imageFile);
+        String result = instance.doOCR(bufferedImage);
         System.out.println(result);
         
         
